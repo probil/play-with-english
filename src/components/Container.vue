@@ -27,6 +27,4 @@ export default {
   display flex
   align-items center
   justify-content: center
-  &__inner
-    outline 1px solid red
 </style>

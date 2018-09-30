@@ -26,17 +26,15 @@ export default {
 .conditions-control-panel
   height 100px
   width 100%
-  outline: 1px solid red
   display flex
+  justify-content space-between
 
   &__btn
     display block
-    flex-basis 50%
-    outline 1px solid yellow
+    flex-basis 49.9%
     background-color: #2c3e50
     border none
     cursor pointer
-    border-radius 5px
     color: inherit
     font-size 1.5rem
 </style>
