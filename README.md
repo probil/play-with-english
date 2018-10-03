@@ -1,4 +1,4 @@
-# learn-eng-tenses
+# play-with-english
 
 ## Project setup
 ```
