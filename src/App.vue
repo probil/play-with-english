@@ -1,45 +1,14 @@
 <template>
   <div id="app">
-    <Container>
-      <TowerDrawer
-        v-if="currentSentence"
-        :question="currentSentence"
-      />
-      <ConditionsControlPanel
-        :conditions="Object.values(conditions)"
-        @answer="checkAnswer"
-      />
-    </Container>
+    <FallStack />
   </div>
 </template>
 <script>
-import Container from '@/components/Container.vue';
-import ConditionsControlPanel from '@/components/ConditionsControlPanel.vue';
-import TowerDrawer from '@/components/TowerDrawer.vue';
-
-const getRandomInt = (start = 0, end = 10) => Math.round(Math.random() * (end - start)) + start;
+import FallStack from '@/components/exercises/fall-stack/FallStack.vue';
 
 export default {
   components: {
-    Container,
-    ConditionsControlPanel,
-    TowerDrawer,
-  },
-  data: () => ({
-    conditions: tenses,
-    sentences,
-    currentSentence: null,
-  }),
-  methods: {
-    getRandomSentence() {
-      return this.sentences[getRandomInt(0, this.sentences.length)];
-    },
-    checkAnswer(answerId) {
-      console.log('The answer is', answerId === this.currentSentence.answer ? ' correct' : 'incorrect');
-    },
-  },
-  mounted() {
-    this.currentSentence = this.getRandomSentence();
+    FallStack,
   },
 };
 </script>
