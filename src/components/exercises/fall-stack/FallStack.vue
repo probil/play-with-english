@@ -16,6 +16,8 @@ import ConditionsControlPanel from './ConditionsControlPanel.vue';
 import TowerDrawer from './TowerDrawer.vue';
 
 const getRandomInt = (start = 0, end = 10) => Math.round(Math.random() * (end - start)) + start;
+const getRandomObjValue = obj => obj[getRandomInt(1, Object.keys(obj).length)];
+
 const tenses = {
   1: {
     id: 1,
@@ -75,7 +77,7 @@ export default {
   }),
   methods: {
     getRandomSentence() {
-      return this.sentences[getRandomInt(0, this.sentences.length)];
+      return getRandomObjValue(this.sentences);
     },
     checkAnswer(answerId) {
       console.log('The answer is', answerId === this.currentSentence.answer ? ' correct' : 'incorrect');
