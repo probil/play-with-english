@@ -70,13 +70,13 @@ export default {
 
     rightStackPosition() {
       return {
-        y: this.containerHeight - this.stackHeight,
+        y: this.containerHeight - Math.max(this.stackHeight, this.$el.scrollHeight),
         x: this.halfOfWidth,
       };
     },
     leftStackPosition() {
       return {
-        y: this.containerHeight - this.stackHeight,
+        y: this.containerHeight - Math.max(this.stackHeight, this.$el.scrollHeight),
         x: -this.halfOfWidth,
       };
     },
@@ -95,9 +95,11 @@ export default {
   },
   mounted() {
     if (!this.isAnswered) {
+      const desiredY = this.containerHeight - Math.max(this.stackHeight, this.$el.scrollHeight);
       this.$tween = new Tween({ x: this.x, y: this.y })
-        .to({ x: this.x, y: this.containerHeight - this.stackHeight }, fallAnimationDuration)
+        .to({ x: this.x, y: desiredY }, fallAnimationDuration)
         .on('update', this.setPosition)
+        .on('complete', () => console.log('Completed with no answers'))
         .start();
     }
   },
