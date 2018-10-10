@@ -95,11 +95,11 @@ export default {
   },
   mounted() {
     if (!this.isAnswered) {
-      const desiredY = this.containerHeight - Math.max(this.stackHeight, this.$el.scrollHeight);
+      const desiredY = this.containerHeight - this.stackHeight - this.$el.scrollHeight;
       this.$tween = new Tween({ x: this.x, y: this.y })
         .to({ x: this.x, y: desiredY }, fallAnimationDuration)
         .on('update', this.setPosition)
-        .on('complete', () => console.log('Completed with no answers'))
+        .on('complete', this.$emit.bind(this, 'felt'))
         .start();
     }
   },

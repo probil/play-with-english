@@ -2,6 +2,7 @@
   <Container>
     <TowerDrawer
       :questions="questions"
+      @answer="checkAnswer"
     />
     <ConditionsControlPanel
       :conditions="Object.values(conditions)"

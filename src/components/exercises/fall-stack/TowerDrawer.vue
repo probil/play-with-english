@@ -5,6 +5,7 @@
       :key="`question-key-${question.sentence.id}-${$index}`"
       :meta="question"
       :stack-height="stackHeight"
+      @felt="$emit('answer', 0)"
     />
   </div>
 </template>
