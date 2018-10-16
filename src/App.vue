@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <FallStack />
+    <FallStack :dataset="dataset" />
   </div>
 </template>
 <script>
 import FallStack from '@/components/exercises/fall-stack/FallStack.vue';
+import { questions, conditions } from '@/datasets/PresentSimpleContinuous';
 
 export default {
   components: {
     FallStack,
   },
+  data: () => ({
+    dataset: {
+      questions,
+      conditions,
+    },
+  }),
 };
 </script>
 <style lang="stylus">
