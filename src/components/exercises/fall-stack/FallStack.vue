@@ -71,6 +71,76 @@ const sentences = {
     title: 'She (feel) her way in the dark',
     answer: 2,
   },
+  9: {
+    id: 9,
+    title: 'Is (see) your\'re in trouble',
+    answer: 1,
+  },
+  10: {
+    id: 10,
+    title: 'I (see) my lawyer tonight',
+    answer: 2,
+  },
+  11: {
+    id: 11,
+    title: 'The kitchen (smell) of burnt meat.',
+    answer: 1,
+  },
+  12: {
+    id: 12,
+    title: 'Why are you (smell) your food?',
+    answer: 2,
+  },
+  13: {
+    id: 13,
+    title: 'He (come) from Spain. He was born in there.',
+    answer: 1,
+  },
+  14: {
+    id: 14,
+    title: 'He (come) from Spain. He is travelling from there.',
+    answer: 2,
+  },
+  15: {
+    id: 15,
+    title: 'I (love) holidays.',
+    answer: 1,
+  },
+  16: {
+    id: 16,
+    title: 'I (love) this holiday.',
+    answer: 2,
+  },
+  17: {
+    id: 17,
+    title: 'You hair (look) great.',
+    answer: 1,
+  },
+  18: {
+    id: 18,
+    title: 'She (look) at some old photographs.',
+    answer: 2,
+  },
+  19: {
+    id: 19,
+    title: 'The baby (weigh) 5 kilos',
+    answer: 1,
+  },
+  20: {
+    id: 20,
+    title: 'I (weigh) myself on my new scales',
+    answer: 2,
+  },
+  21: {
+    id: 21,
+    title: 'Ann (be) very tall',
+    answer: 1,
+  },
+  22: {
+    id: 22,
+    title: 'Ann (be) very kind to me these days',
+    answer: 2,
+  },
 };
 
 export default {
