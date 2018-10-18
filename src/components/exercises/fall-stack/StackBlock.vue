@@ -6,7 +6,7 @@
 <script>
 import { Tween, autoPlay } from 'es6-tween';
 
-const fallAnimationDuration = 20000;
+const fallAnimationDuration = 14000;
 const answerAnimationDuration = 500;
 
 autoPlay(true);
