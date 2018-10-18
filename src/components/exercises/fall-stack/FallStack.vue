@@ -26,6 +26,11 @@ export default {
     TowerDrawer,
   },
   props: {
+    numberOfQuestions: {
+      type: Number,
+      default: 15,
+      validator: val => Number.isInteger(val) && val > 0 && val <= 50,
+    },
     dataset: {
       type: Object,
       required: true,
@@ -51,7 +56,7 @@ export default {
     },
   },
   mounted() {
-    this.questions = [...Array(10).keys()]
+    this.questions = [...Array(this.numberOfQuestions).keys()]
       .map(() => ({
         sentence: this.getRandomSentence(),
         conditions: Object.values(this.dataset.conditions),
