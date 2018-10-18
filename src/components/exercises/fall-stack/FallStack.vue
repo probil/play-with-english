@@ -26,6 +26,11 @@ export default {
     TowerDrawer,
   },
   props: {
+    numberOfQuestions: {
+      type: Number,
+      default: 15,
+      validator: val => Number.isInteger(val) && val > 0 && val <= 50,
+    },
     dataset: {
       type: Object,
       required: true,
@@ -33,6 +38,7 @@ export default {
     },
   },
   data: () => ({
+    status: '',
     questions: [],
   }),
   methods: {
@@ -44,10 +50,13 @@ export default {
       const currentIndex = this.questions.findIndex(q => q.userAnswer === null);
       if (currentIndex === undefined || currentIndex === -1) return;
       Vue.set(this.questions[currentIndex], 'userAnswer', answerId);
+      if (currentIndex === this.numberOfQuestions - 1) {
+        this.$emit('game:finished');
+      }
     },
   },
   mounted() {
-    this.questions = [...Array(10).keys()]
+    this.questions = [...Array(this.numberOfQuestions).keys()]
       .map(() => ({
         sentence: this.getRandomSentence(),
         conditions: Object.values(this.dataset.conditions),

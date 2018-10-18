@@ -1,21 +1,33 @@
 <template>
   <div id="app">
-    <FallStack :dataset="dataset" />
+    <GetReady
+      v-if="state === 'init'"
+      :time="3"
+      @ready="state = 'started'"
+    />
+    <FallStack
+      v-if="state === 'started'"
+      :dataset="dataset"
+      @game:finished="state = 'init'"
+    />
   </div>
 </template>
 <script>
 import FallStack from '@/components/exercises/fall-stack/FallStack.vue';
+import GetReady from '@/components/GetReady.vue';
 import { questions, conditions } from '@/datasets/PresentSimpleContinuous';
 
 export default {
   components: {
     FallStack,
+    GetReady,
   },
   data: () => ({
     dataset: {
       questions,
       conditions,
     },
+    state: 'init',
   }),
 };
 </script>
