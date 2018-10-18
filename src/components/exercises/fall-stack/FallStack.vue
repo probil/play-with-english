@@ -51,7 +51,10 @@ export default {
       if (currentIndex === undefined || currentIndex === -1) return;
       Vue.set(this.questions[currentIndex], 'userAnswer', answerId);
       if (currentIndex === this.numberOfQuestions - 1) {
-        this.$emit('game:finished');
+        const correct = this.questions.filter(q => q.sentence.answer === q.userAnswer).length;
+        const unanswered = this.questions.filter(q => q.userAnswer === 0).length;
+        const incorrect = this.questions.length - correct - unanswered;
+        this.$emit('game:finished', { correct, incorrect, unanswered });
       }
     },
   },
