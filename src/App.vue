@@ -20,7 +20,7 @@
 <script>
 import FallStack from '@/components/exercises/fall-stack/FallStack.vue';
 import GetReady from '@/components/GetReady.vue';
-import StatsPage from '@/components/StatsPage.vue'
+import StatsPage from '@/components/StatsPage.vue';
 import { questions, conditions } from '@/datasets/PresentSimpleContinuous';
 
 export default {
