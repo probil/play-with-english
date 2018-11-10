@@ -1,0 +1,17 @@
+<template>
+  <div class="dashboard">
+    <h2>Fall-stack</h2>
+    <router-link to="/fall-stack">> Present Simple vs Present Continuous</router-link>
+  </div>
+</template>
+<style lang="stylus">
+  .dashboard
+    width 400px
+    margin 40px auto
+    box-sizing border-box
+    a
+      color whitesmoke
+      text-decoration none
+      &:hover
+        border-bottom 1px dotted whitesmoke
+</style>
