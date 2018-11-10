@@ -1,5 +1,7 @@
 <template>
   <div class="dashboard">
+    <h2>General</h2>
+    <router-link to="/play-phrases">> Play Phrases</router-link>
     <h2>Fall-stack</h2>
     <router-link to="/fall-stack">> Present Simple vs Present Continuous</router-link>
   </div>
