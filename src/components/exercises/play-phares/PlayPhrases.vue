@@ -21,8 +21,8 @@
 </template>
 <script>
 import axios from 'axios';
-import debounce from 'lodash.debounce';
-import _get from 'lodash.get';
+import debounce from 'lodash/debounce';
+import _get from 'lodash/get';
 
 const getRandomInt = (start = 0, end = 10) => Math.round(Math.random() * (end - start)) + start;
 const testPhrases = [
