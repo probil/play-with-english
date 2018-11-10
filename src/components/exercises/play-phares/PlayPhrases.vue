@@ -1,20 +1,20 @@
 <template>
-  <div class="quick-lookup">
+  <div class="play-phrases">
     <input
       type="text"
       v-model="searchValue"
-      class="quick-lookup__input"
+      class="play-phrases__input"
     />
     <video
       autoplay="autoplay"
       controls="controls"
-      class="quick-lookup__video"
+      class="play-phrases__video"
       v-if="currentVideo"
       ref="video"
       @ended="nextVideo"
       :src="currentVideo"
     ></video>
-    <div v-if="isNoVideoAvailable" class="quick-lookup__nothing">
+    <div v-if="isNoVideoAvailable" class="play-phrases__nothing">
       Nothing found :(
     </div>
   </div>
@@ -95,7 +95,7 @@ export default {
 };
 </script>
 <style lang="stylus">
-.quick-lookup
+.play-phrases
   display flex
   flex-direction column
   justify-content space-between

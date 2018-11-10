@@ -1,12 +1,12 @@
 <template>
-  <QuickLookup/>
+  <PlayPhrases/>
 </template>
 <script>
-import QuickLookup from '@/components/exercises/quick-lookup/QuickLookup.vue';
+import PlayPhrases from '@/components/exercises/play-phares/PlayPhrases.vue';
 
 export default {
   components: {
-    QuickLookup,
+    PlayPhrases,
   },
 };
 </script>
