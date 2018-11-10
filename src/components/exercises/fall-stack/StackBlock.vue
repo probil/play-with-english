@@ -1,6 +1,6 @@
 <template>
   <p class="stack-block">
-    {{ title }}
+    {{ question.title }}
   </p>
 </template>
 <script>
@@ -25,8 +25,14 @@ export default {
       type: Number,
       default: 0,
     },
-    meta: {
+    question: {
       type: Object,
+    },
+    userAnswer: {
+      type: [Number, undefined],
+    },
+    conditions: {
+      type: Array,
     },
   },
   data: () => ({
@@ -35,17 +41,14 @@ export default {
     $tween: null,
   }),
   computed: {
-    title() {
-      return this.meta.sentence.title;
-    },
     isAnswered() {
-      return typeof this.meta.userAnswer === 'number';
+      return typeof this.userAnswer === 'number';
     },
     isAnsweredCorrectly() {
-      return this.meta.userAnswer === this.meta.sentence.answer;
+      return this.userAnswer === this.question.answer;
     },
     isRightAnswerCorrect() {
-      return this.meta.sentence.answer === this.meta.conditions[0].id;
+      return this.question.answer === this.conditions[0].id;
     },
     halfOfWidth() {
       return Math.round(this.$el.scrollWidth / 2);

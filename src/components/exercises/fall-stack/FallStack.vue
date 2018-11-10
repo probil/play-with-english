@@ -1,7 +1,8 @@
 <template>
   <Container>
     <TowerDrawer
-      :questions="questions"
+      :questions="currentQuestions"
+      :wrongAnswersCount="countIncorrect"
       @answer="checkAnswer"
     />
     <ConditionsControlPanel
@@ -11,13 +12,10 @@
   </Container>
 </template>
 <script>
-import Vue from 'vue';
+import { mapActions, mapGetters } from 'vuex';
 import Container from './Container.vue';
 import ConditionsControlPanel from './ConditionsControlPanel.vue';
 import TowerDrawer from './TowerDrawer.vue';
-
-const getRandomInt = (start = 0, end = 10) => Math.round(Math.random() * (end - start)) + start;
-const getRandomObjValue = obj => obj[getRandomInt(1, Object.keys(obj).length)];
 
 export default {
   components: {
@@ -39,33 +37,39 @@ export default {
   },
   data: () => ({
     status: '',
-    questions: [],
   }),
+  computed: {
+    ...mapGetters('fallStack', [
+      'currentQuestions',
+      'isFinished',
+      'countIncorrect',
+      'countUnanswered',
+      'countCorrect',
+    ]),
+  },
   methods: {
-    getRandomSentence() {
-      return getRandomObjValue(this.dataset.questions);
-    },
+    ...mapActions('fallStack', ['start', 'setAnswer']),
     checkAnswer(answerId) {
       if (this.status !== 'started') return;
-      const currentIndex = this.questions.findIndex(q => q.userAnswer === null);
-      if (currentIndex === undefined || currentIndex === -1) return;
-      Vue.set(this.questions[currentIndex], 'userAnswer', answerId);
-      if (currentIndex === this.numberOfQuestions - 1) {
-        const correct = this.questions.filter(q => q.sentence.answer === q.userAnswer).length;
-        const unanswered = this.questions.filter(q => q.userAnswer === 0).length;
-        const incorrect = this.questions.length - correct - unanswered;
-        this.$emit('game:finished', { correct, incorrect, unanswered });
-      }
+      this.setAnswer(answerId);
     },
   },
   mounted() {
-    this.questions = [...Array(this.numberOfQuestions).keys()]
-      .map(() => ({
-        sentence: this.getRandomSentence(),
-        conditions: Object.values(this.dataset.conditions),
-        userAnswer: null,
-      }));
+    this.start(this.dataset);
     this.status = 'started';
+  },
+  watch: {
+    isFinished(value, oldValue) {
+      if (value === oldValue) return;
+      if (this.status !== 'started') return;
+      if (value === true && oldValue === false) {
+        this.$emit('game:finished', {
+          correct: this.countCorrect,
+          incorrect: this.countIncorrect,
+          unanswered: this.countUnanswered,
+        });
+      }
+    },
   },
 };
 </script>
