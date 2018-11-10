@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import DashboardPage from '@/components/pages/Dashboard.vue';
 import FallStackPage from '@/components/pages/FallStack.vue';
+import PlayPhrasesPage from '@/components/pages/PlayPhrases.vue';
 
 Vue.use(Router);
 
@@ -12,5 +13,6 @@ export default new Router({
   routes: [
     { path: '/', component: DashboardPage },
     { path: '/fall-stack', component: FallStackPage },
+    { path: '/play-phrases', component: PlayPhrasesPage },
   ],
 });
