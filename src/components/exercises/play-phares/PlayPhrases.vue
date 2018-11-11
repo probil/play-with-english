@@ -1,10 +1,12 @@
 <template>
   <div class="play-phrases">
-    <input
-      type="text"
-      v-model="searchValue"
-      class="play-phrases__input"
-    />
+    <label class="play-phrases__input-label">
+      <input
+        type="text"
+        v-model.trim="searchValue"
+        class="play-phrases__input"
+      />
+    </label>
     <video
       autoplay="autoplay"
       controls="controls"
@@ -14,83 +16,42 @@
       @ended="nextVideo"
       :src="currentVideo"
     ></video>
-    <div v-if="isNoVideoAvailable" class="play-phrases__nothing">
+    <div v-if="!isLoading && !isVideoAvailable" class="play-phrases__nothing">
       Nothing found :(
     </div>
   </div>
 </template>
 <script>
-import axios from 'axios';
-import debounce from 'lodash/debounce';
-import _get from 'lodash/get';
+import { mapActions, mapGetters, mapState } from 'vuex';
 
-const getRandomInt = (start = 0, end = 10) => Math.round(Math.random() * (end - start)) + start;
-const testPhrases = [
-  'You\'re welcome!',
-  'What\'s up',
-  'Are you ready?',
-  'I thought',
-  'See you soon',
-  'give up',
-  'appreciate it',
-  'Why did you do that',
-  'say hello to',
-  'back and forth',
-  'Let\'s do this',
-  'I beg your pardon',
-  'stick around',
-  'Have you ever been to',
-  'I\'m not sure',
-  'Good luck',
-  'will you please',
-  'I knew that',
-  'figured out',
-  'Be careful',
-  'we have to go',
-];
 export default {
-  data: () => ({
-    searchValue: '',
-    currentVideoIndex: 0,
-    response: null,
-  }),
   computed: {
-    currentVideo() {
-      return _get(this.response, ['phrases', this.currentVideoIndex, 'video-url']);
-    },
-    isNoVideoAvailable() {
-      return _get(this.response, 'count') === 0;
+    ...mapState('playPhrases', ['searchPhrase']),
+    ...mapGetters('playPhrases', ['isVideoAvailable', 'currentVideo', 'isLoading']),
+    searchValue: {
+      get() {
+        return this.searchPhrase;
+      },
+      set(value) {
+        this.setSearchPhrase(value);
+        this.searchPhrasesDebounced(value);
+      },
     },
   },
   methods: {
-    updateTheQuery() {
-      this.currentVideoIndex = 0;
+    ...mapActions('playPhrases', ['setSearchPhrase', 'moveToNextVideo', 'setRandomPhrase', 'searchPhrasesDebounced', 'searchPhrases']),
+    stopVideo() {
       const { video } = this.$refs;
       if (video && !video.paused && !video.ended && video.stop) video.stop();
-      this.getVideo(this.searchValue);
-    },
-    async getVideo(q) {
-      const responses = await axios.get('https://www.playphrase.me/api/v1/phrases/search', {
-        params: { q },
-      });
-      this.response = responses.data;
     },
     nextVideo() {
-      const { video } = this.$refs;
-      if (video && !video.paused && !video.ended) video.stop();
-      this.currentVideoIndex = (this.currentVideoIndex + 1) % this.response.phrases.length;
+      this.stopVideo();
+      this.moveToNextVideo();
     },
   },
   mounted() {
-    const updateTheQueryFn = this.updateTheQuery;
-    this.updateTheQuery = debounce(updateTheQueryFn, 1500);
-    this.searchValue = testPhrases[getRandomInt(0, testPhrases.length)];
-    updateTheQueryFn();
-  },
-  watch: {
-    searchValue() {
-      this.updateTheQuery();
-    },
+    this.setRandomPhrase();
+    this.searchPhrases();
   },
 };
 </script>
@@ -102,6 +63,8 @@ export default {
   align-items center
   height 100vh
   width 100vw
+  &__input-label
+    width 100%
   &__input
     font-size 4rem
     background-color: rgba(0,0,0, 0.2)
