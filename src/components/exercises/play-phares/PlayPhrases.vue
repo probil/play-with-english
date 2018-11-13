@@ -7,15 +7,26 @@
         class="play-phrases__input"
       />
     </label>
-    <video
-      autoplay="autoplay"
-      controls="controls"
-      class="play-phrases__video"
-      v-if="currentVideo"
-      ref="video"
-      @ended="nextVideo"
-      :src="currentVideo"
-    ></video>
+    <div class="play-phrases__video-container">
+      <video
+        autoplay="autoplay"
+        controls="controls"
+        class="play-phrases__video"
+        v-if="currentVideoUrl"
+        ref="video"
+        @ended="nextVideo"
+        :src="currentVideoUrl"
+      ></video>
+      <a
+        class="play-phrases__video-info"
+        title="Click to open IMDB page"
+        target="_blank"
+        v-if="currentVideoInfo"
+        :href="currentVideoInfo.imdb"
+      >
+        &#x1F3AC; {{ currentVideoInfo.info }}
+      </a>
+    </div>
     <div v-if="!isLoading && !isVideoAvailable" class="play-phrases__nothing">
       Nothing found :(
     </div>
@@ -27,7 +38,7 @@ import { mapActions, mapGetters, mapState } from 'vuex';
 export default {
   computed: {
     ...mapState('playPhrases', ['searchPhrase']),
-    ...mapGetters('playPhrases', ['isVideoAvailable', 'currentVideo', 'isLoading']),
+    ...mapGetters('playPhrases', ['isVideoAvailable', 'currentVideoUrl', 'isLoading', 'currentVideoInfo']),
     searchValue: {
       get() {
         return this.searchPhrase;
@@ -76,10 +87,29 @@ export default {
     width 100%
     text-align center
     box-sizing border-box
-  &__video
+  &__video-container
     flex-grow 1
     width 100%
     background-color: black;
+    position relative
+    display flex
+    overflow hidden
+  &__video
+    min-height 100%
+    min-width 100%
+  &__video-info
+    position absolute
+    opacity 0.4
+    top 2rem
+    right 2rem
+    font-size 1.2rem
+    text-decoration none
+    color: whitesmoke
+    background-color: rgba(0, 0, 0, 0.7);
+    padding 0.5rem
+    border-radius 0.2rem
+    &:hover
+      opacity 0.85
   &__nothing
     flex-grow 1
     width 100%
