@@ -26,6 +26,9 @@
       >
         &#x1F3AC; {{ currentVideoInfo.info }}
       </a>
+      <p class="play-phrases__subs">
+        {{ currentVideoSubs }}
+      </p>
     </div>
     <div v-if="!isLoading && !isVideoAvailable" class="play-phrases__nothing">
       Nothing found :(
@@ -38,7 +41,7 @@ import { mapActions, mapGetters, mapState } from 'vuex';
 export default {
   computed: {
     ...mapState('playPhrases', ['searchPhrase']),
-    ...mapGetters('playPhrases', ['isVideoAvailable', 'currentVideoUrl', 'isLoading', 'currentVideoInfo']),
+    ...mapGetters('playPhrases', ['isVideoAvailable', 'currentVideoUrl', 'isLoading', 'currentVideoInfo', 'currentVideoSubs']),
     searchValue: {
       get() {
         return this.searchPhrase;
@@ -110,6 +113,20 @@ export default {
     border-radius 0.2rem
     &:hover
       opacity 0.85
+  &__subs
+    position absolute
+    bottom 5rem
+    left 50%
+    transform translateX(-50%)
+    font-size 1.5rem
+    color: whitesmoke
+    background-color: rgba(0, 0, 0, 0.7);
+    padding 0.2rem 0.5rem
+    border-radius 0.2rem
+    box-sizing border-box
+    opacity 0.83
+    margin 0
+    line-height 1.5
   &__nothing
     flex-grow 1
     width 100%
