@@ -2,8 +2,10 @@
   <div class="tower-drawer" ref="container">
     <StackBlock
       v-for="(question, $index) in stackQuestions"
-      :key="`question-key-${question.sentence.id}-${$index}`"
-      :meta="question"
+      :key="`question-key-${question.id}-${$index}`"
+      :question="question"
+      :user-answer="getAnswerByIndex($index)"
+      :conditions="conditions"
       :stack-height="stackHeight"
       @felt="$emit('answer', 0)"
     />
@@ -11,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import StackBlock from './StackBlock.vue';
 
 const stackBlockPadding = 10;
@@ -25,25 +28,24 @@ export default {
       type: Array,
       required: true,
     },
+    wrongAnswersCount: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
   },
   computed: {
-    answeredQuestions() {
-      return this.questions
-        .filter(q => q.userAnswer !== null);
-    },
-    currentQuestion() {
-      return this.questions.find(q => q.userAnswer === null);
-    },
+    ...mapGetters('fallStack', [
+      'currentQuestion',
+      'currentAnsweredQuestions',
+      'getAnswerByIndex',
+      'conditions',
+    ]),
     stackQuestions() {
       if (this.currentQuestion) {
-        return [...this.answeredQuestions, this.currentQuestion];
+        return [...this.currentAnsweredQuestions, this.currentQuestion];
       }
-      return this.answeredQuestions;
-    },
-    wrongAnswersCount() {
-      return this.answeredQuestions
-        .filter(q => q.userAnswer !== q.sentence.answer)
-        .length;
+      return this.currentAnsweredQuestions;
     },
     stackHeight() {
       return this.wrongAnswersCount * (stackBlockPadding + stackBlockPadding + stackBlockHeight);
