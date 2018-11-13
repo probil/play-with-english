@@ -46,7 +46,9 @@ const state = {
 
 const getters = {
   isLoading: ({ loading }) => loading,
-  currentVideo: ({ phrases, currentVideoIndex }) => _get(phrases, [currentVideoIndex, 'video-url']),
+  currentVideoUrl: ({ phrases, currentVideoIndex }) => _get(phrases, [currentVideoIndex, 'video-url']),
+  currentVideoInfo: ({ phrases, currentVideoIndex }) => _get(phrases, [currentVideoIndex, 'video_info']),
+  currentVideoSubs: ({ phrases, currentVideoIndex }) => _get(phrases, [currentVideoIndex, 'text']),
   isVideoAvailable: ({ phrases }) => _get(phrases, 'length', 0) > 0,
 };
 
