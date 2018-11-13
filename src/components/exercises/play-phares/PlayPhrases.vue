@@ -10,11 +10,14 @@
     <div class="play-phrases__video-container">
       <video
         autoplay="autoplay"
-        controls="controls"
+        :controls="controls"
         class="play-phrases__video"
         v-if="currentVideoUrl"
         ref="video"
+        @click="playPauseVideo"
         @ended="nextVideo"
+        @mouseover="showControls"
+        @mouseout="hideControls"
         :src="currentVideoUrl"
       ></video>
       <a
@@ -39,6 +42,9 @@
 import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
+  data: () => ({
+    controls: 'controls',
+  }),
   computed: {
     ...mapState('playPhrases', ['searchPhrase']),
     ...mapGetters('playPhrases', ['isVideoAvailable', 'currentVideoUrl', 'isLoading', 'currentVideoInfo', 'currentVideoSubs']),
@@ -56,11 +62,25 @@ export default {
     ...mapActions('playPhrases', ['setSearchPhrase', 'moveToNextVideo', 'setRandomPhrase', 'searchPhrasesDebounced', 'searchPhrases']),
     stopVideo() {
       const { video } = this.$refs;
-      if (video && !video.paused && !video.ended && video.stop) video.stop();
+      if (!video.paused && !video.ended && video.stop) video.stop();
     },
     nextVideo() {
       this.stopVideo();
       this.moveToNextVideo();
+    },
+    playPauseVideo() {
+      const { video } = this.$refs;
+      const isPlaying = !video.paused && !video.ended;
+      const isPaused = video.paused;
+      if (isPaused) return video.play();
+      if (isPlaying) return video.pause();
+      return undefined;
+    },
+    showControls() {
+      this.controls = 'controls';
+    },
+    hideControls() {
+      this.controls = undefined;
     },
   },
   mounted() {
@@ -115,7 +135,7 @@ export default {
       opacity 0.85
   &__subs
     position absolute
-    bottom 5rem
+    bottom 3rem
     left 50%
     transform translateX(-50%)
     font-size 1.5rem
