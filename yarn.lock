@@ -8525,6 +8525,11 @@ sockjs@0.3.19:
     faye-websocket "^0.10.0"
     uuid "^3.0.1"
 
+sortablejs@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.7.0.tgz#80a2b2370abd568e1cec8c271131ef30a904fa28"
+  integrity sha1-gKKyNwq9Vo4c7IwnETHvMKkE+ig=
+
 source-list-map@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.0.tgz#aaa47403f7b245a92fbc97ea08f250d6087ed085"
@@ -9494,6 +9499,13 @@ vue@2.5.19:
   version "2.5.19"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.19.tgz#c4c9ba01a97a23ea24018d4702e994c15785e025"
   integrity sha512-zs7w/dy/yMTCcUunUl05UHhYEI2bt67R7G2jD42HnJ28JxCtC1FY8zZ9GU4PF2SJP8Ff/B9HyojWk/NztqKfFA==
+
+vuedraggable@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/vuedraggable/-/vuedraggable-2.16.0.tgz#52127081a2adb3de5fabd214d404ff3eee63575a"
+  integrity sha512-fr9gcWKXMJlzbbtJcrQs4kU7qdOZqd4SEpAcx+r0nykbW8AygZN0aKVpadEtI53T8A2azhzCdXMvEqrLuKE2fA==
+  dependencies:
+    sortablejs "^1.7.0"
 
 vuex@3.0.1:
   version "3.0.1"
