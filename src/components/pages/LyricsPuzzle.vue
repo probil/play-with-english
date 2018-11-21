@@ -2,6 +2,9 @@
   <div class="lyrics-puzzle">
     <h2>Lyrics puzzle</h2>
     <p>You need to put lines from the first column into the second in correct order</p>
+    <p>
+      <iframe width="100%" height="133" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/179161766&color=%23060505&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </p>
     <div class="lyrics-puzzle__columns">
       <draggable
         class="lyrics-puzzle__column-values"
@@ -130,7 +133,7 @@ export default {
   &__columns
     display flex
     justify-content space-between
-    height 80vh
+    height 70vh
 
   &__column-values, &__column-check
     flex-basis 45%
