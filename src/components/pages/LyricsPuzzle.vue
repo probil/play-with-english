@@ -14,10 +14,10 @@
         <transition-group name="flip-list" tag="div" class="lyrics-puzzle__group">
           <div
             class="lyrics-puzzle__line"
-            v-for="(line, index) in shuffledLines"
-            :key="`shuffled-${index}`"
+            v-for="line in shuffledLines"
+            :key="`shuffled-${line.id}`"
           >
-            {{ line }}
+            {{ line.value }}
           </div>
         </transition-group>
       </draggable>
@@ -33,10 +33,10 @@
         <transition-group name="flip-list" tag="div" class="lyrics-puzzle__group">
           <div
             class="lyrics-puzzle__line"
-            v-for="(line, index) in userLines"
-            :key="`user-${index}`"
+            v-for="line in userLines"
+            :key="`user-${line.id}`"
           >
-            {{ line }}
+            {{ line.value }}
           </div>
         </transition-group>
       </draggable>
@@ -97,7 +97,8 @@ export default {
     prepareSong() {
       this.preparedSong = this.song
         .split('\n')
-        .filter(value => value.trim());
+        .filter(value => value.trim())
+        .map((value, id) => ({ value, id }));
       this.shuffledLines = _shuffle(this.preparedSong);
     },
     startTimer() {
@@ -145,16 +146,15 @@ export default {
     user-select none
     border 2px solid transparent
     box-sizing border-box
-    display inline-block
     width 100%
-    transition all 1s
+    transition max-height, opacity, transform 0.5s
+    overflow hidden
 
     &:active
       /* (Optional) Apply a "closed-hand" cursor during drag operation. */
       cursor: grabbing;
       cursor: -moz-grabbing;
       cursor: -webkit-grabbing;
-      opacity 0.5
       border 2px dashed grey
 
     &.sortable-ghost
@@ -171,9 +171,10 @@ export default {
     line-height 1.6
 
 .flip-list-move
-  transition transform 1s
+  transition transform 0.8s
 
 .flip-list-enter, .flip-list-leave-active {
-  opacity: 0.4;
+  opacity: 0;
+  max-height 0;
 }
 </style>
