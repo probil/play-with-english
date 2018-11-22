@@ -30,7 +30,7 @@
         v-model="userLines"
         :options="{
           group: 'songLines',
-          draggable: '.lyrics-puzzle__line'
+          draggable: '.lyrics-puzzle__line',
         }"
       >
         <transition-group name="flip-list" tag="div" class="lyrics-puzzle__group">
@@ -38,7 +38,10 @@
             v-for="(line, index) in userLines"
             :key="`user-${line.id}`"
             class="lyrics-puzzle__line"
-            :class="{ 'lyrics-puzzle__line--correct': line.id === index }"
+            :class="{
+              'lyrics-puzzle__line--correct': isLineCorrect(line, index),
+              'lyrics-puzzle__line--incorrect': !isLineCorrect(line, index),
+            }"
           >
             {{ line.value }}
           </div>
@@ -97,6 +100,14 @@ export default {
     userLines: [],
     time: 0,
   }),
+  computed: {
+    isFinished() {
+      return this.shuffledLines.length === 0
+        && this.userLines.length === this.preparedSong.length
+        && this.userLines.length > 0
+        && this.userLines.every(this.isLineCorrect);
+    },
+  },
   methods: {
     prepareSong() {
       this.preparedSong = this.song
@@ -110,6 +121,9 @@ export default {
         this.time += 1;
       }, 1000);
     },
+    isLineCorrect(line, index) {
+      return this.preparedSong[index].value.trim() === line.value.trim();
+    },
   },
   mounted() {
     this.prepareSong();
@@ -121,6 +135,11 @@ export default {
       const seconds = value % 60;
       const pad = number => (`0${number}`).slice(-2);
       return `${pad(minutes)}:${pad(seconds)}`;
+    },
+  },
+  watch: {
+    isFinished(value) {
+      if (value) this.$emit('finish');
     },
   },
 };
@@ -155,7 +174,10 @@ export default {
     overflow hidden
 
     &--correct
-      background-color: green;
+      background-color green
+
+    &--incorrect
+      background-color: red;
 
     &:active
       /* (Optional) Apply a "closed-hand" cursor during drag operation. */
