@@ -3,7 +3,7 @@
     <h2>Lyrics puzzle</h2>
     <p>You need to put lines from the first column into the second in correct order</p>
     <p>
-      <iframe width="100%" height="133" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/179161766&color=%23060505&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      <iframe width="100%" height="133" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/179161766&color=%23060505&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=true"></iframe>
     </p>
     <div class="lyrics-puzzle__columns">
       <draggable
