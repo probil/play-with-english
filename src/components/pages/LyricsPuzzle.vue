@@ -35,9 +35,10 @@
       >
         <transition-group name="flip-list" tag="div" class="lyrics-puzzle__group">
           <div
-            class="lyrics-puzzle__line"
-            v-for="line in userLines"
+            v-for="(line, index) in userLines"
             :key="`user-${line.id}`"
+            class="lyrics-puzzle__line"
+            :class="{ 'lyrics-puzzle__line--correct': line.id === index }"
           >
             {{ line.value }}
           </div>
@@ -152,6 +153,9 @@ export default {
     width 100%
     transition max-height, opacity, transform 0.5s
     overflow hidden
+
+    &--correct
+      background-color: green;
 
     &:active
       /* (Optional) Apply a "closed-hand" cursor during drag operation. */
