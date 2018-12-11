@@ -25,7 +25,7 @@
         title="Click to open IMDB page"
         target="_blank"
         v-if="currentVideoInfo"
-        :href="currentVideoInfo.imdb"
+        :href="`https://www.imdb.com/title/${currentVideoInfo.imdb}`"
       >
         &#x1F3AC; {{ currentVideoInfo.info }}
       </a>
