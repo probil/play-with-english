@@ -1,16 +1,15 @@
 <template>
   <div class="lyrics-puzzle">
     <h2>Lyrics puzzle</h2>
-    <p>You need to put lines from the first column into the second in correct order</p>
     <p>
-      <iframe width="100%" height="133" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/179161766&color=%23060505&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=true"></iframe>
+      <MusicPlayer :source="source"/>
     </p>
     <div class="lyrics-puzzle__columns">
       <draggable
         class="lyrics-puzzle__column-values"
         v-model="shuffledLines"
         :options="{
-          group:  'songLines',
+          group:  'lyricsLines',
           draggable: '.lyrics-puzzle__line'
         }"
       >
@@ -29,7 +28,7 @@
         class="lyrics-puzzle__column-check"
         v-model="userLines"
         :options="{
-          group: 'songLines',
+          group: 'lyricsLines',
           draggable: '.lyrics-puzzle__line',
         }"
       >
@@ -53,48 +52,19 @@
 <script>
 import _shuffle from 'lodash/shuffle';
 import draggable from 'vuedraggable';
-
-const song = `
-I want to break free
-I want to break free
-I want to break free from your lies
-You're so self-satisfied I don't need you
-I've got to break free
-God knows, God knows I want to break free
-
-I've fallen in love
-I've fallen in love for the first time
-And this time I know it's for real
-I've fallen in love, yeah
-God knows, God knows I've fallen in love
-
-It's strange but it's true
-I can't get over the way you love me like you do
-But I have to be sure
-When I walk out that door
-Oh how I want to be free, baby
-Oh how I want to be free
-Oh how I want to break free
-
-But life still goes on
-I can't get used to, living without, living without
-Living without you by my side
-I don't want to live alone, hey
-God knows, got to make it on my own
-So baby can't you see
-I've got to break free
-
-I've got to break free
-I want to break free, yeah
-I want, I want, I want, I want to break free
-`;
+import MusicPlayer from './MusicPlayer.vue';
+import timeFormat from '@/filters/timeFormat';
 
 export default {
   components: {
     draggable,
+    MusicPlayer,
+  },
+  props: {
+    lyrics: String,
+    source: String,
   },
   data: () => ({
-    song,
     preparedSong: [],
     shuffledLines: [],
     userLines: [],
@@ -110,7 +80,7 @@ export default {
   },
   methods: {
     prepareSong() {
-      this.preparedSong = this.song
+      this.preparedSong = this.lyrics
         .split('\n')
         .filter(value => value.trim())
         .map((value, id) => ({ value, id }));
@@ -130,18 +100,13 @@ export default {
     this.startTimer();
   },
   filters: {
-    timeFormat(value) {
-      const minutes = Math.trunc(value / 60);
-      const seconds = value % 60;
-      const pad = number => (`0${number}`).slice(-2);
-      return `${pad(minutes)}:${pad(seconds)}`;
-    },
+    timeFormat,
   },
   watch: {
     isFinished(value) {
       if (value) {
         clearInterval(this.$timer);
-        this.$emit('finish');
+        this.$emit('finish', { time: this.time });
       }
     },
   },
@@ -156,12 +121,12 @@ export default {
   &__columns
     display flex
     justify-content space-between
-    height 70vh
+    height calc(100vh - 244px)
 
   &__column-values, &__column-check
     flex-basis 45%
     overflow-y auto
-    border 1px solid red
+    border 1px solid #344a5f
 
   &__line
     font-size 1rem

@@ -1,7 +1,11 @@
 <template>
   <div class="song-chooser">
     <div class="song-chooser__wrapper">
-      <div class="song-line" v-for="song in songs" :key="song.source">
+      <div
+        class="song-line"
+        v-for="song in songs" :key="song.source"
+        @click="$emit('select', song)"
+      >
         <div class="song-line__arrow">&#x27A4;</div>
         <div class="song-line__details">
           <h4 class="song-line__artist">{{song.artist}}</h4>
