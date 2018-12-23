@@ -19,8 +19,8 @@
 </template>
 <script>
 import FallStack from '@/components/exercises/fall-stack/FallStack.vue';
-import GetReady from '@/components/GetReady.vue';
-import StatsPage from '@/components/StatsPage.vue';
+import GetReady from '@/components/exercises/fall-stack/GetReady.vue';
+import StatsPage from '@/components/exercises/fall-stack/StatsPage.vue';
 import { questions, conditions } from '@/datasets/PresentSimpleContinuous';
 
 export default {
