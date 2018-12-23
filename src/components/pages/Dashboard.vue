@@ -1,16 +1,31 @@
 <template>
   <div class="dashboard">
-    <h2>General</h2>
-    <p>
-      <router-link to="/play-phrases">> Play Phrases</router-link>
+    <h2>Exercises</h2>
+    <p v-for="exercise in exercises" :key="exercise.link">
+      <router-link :to="exercise.link">> {{ exercise.title }}</router-link>
     </p>
-    <p>
-      <router-link to="/lyrics-puzzle">> Lyrics Puzzle</router-link>
-    </p>
-    <h2>Fall-stack</h2>
-    <router-link to="/fall-stack">> Present Simple vs Present Continuous</router-link>
   </div>
 </template>
+<script>
+export default {
+  data: () => ({
+    exercises: [
+      {
+        title: 'Play Phrases',
+        link: '/play-phrases',
+      },
+      {
+        title: 'Lyrics Puzzle',
+        link: '/lyrics-puzzle',
+      },
+      {
+        title: 'Fall-stack',
+        link: '/fall-stack',
+      },
+    ],
+  }),
+};
+</script>
 <style lang="stylus">
   .dashboard
     width 400px
