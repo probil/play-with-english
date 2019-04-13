@@ -33,6 +33,10 @@ export default {
         title: 'Fall-stack',
         link: '/fall-stack',
       },
+      {
+        title: 'Discovery',
+        link: '/discovery',
+      },
     ],
   }),
 };
