@@ -3982,10 +3982,10 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-es6-tween@5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/es6-tween/-/es6-tween-5.5.0.tgz#a924068f9e9595a5f2de5a346d6fdefaaf83e0f9"
-  integrity sha512-gYO5yN3WeLgYHXxoZBigeh6naH1wNI6BzouWFMmA8TlznKQxKkaur8vuX5HpxZsNv9/kh0JVf5YsD8Ln4odoCw==
+es6-tween@5.5.3:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/es6-tween/-/es6-tween-5.5.3.tgz#2ad04956f37db59e3314db6f3f4a4515c8beb8a3"
+  integrity sha512-mQB5Dm10zWHTYqHjMiRu2BBKLOnAUKffhHoW2/fhd/fqXFiyhLZtalEMee2lg5eaktLZrTKvmYKTauLwnHta5Q==
 
 escape-html@~1.0.3:
   version "1.0.3"
