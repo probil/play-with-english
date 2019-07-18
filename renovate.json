@@ -2,13 +2,22 @@
   "extends": [
     "config:base"
   ],
-   "packageRules": [
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "automergeType": "branch",
+  "packageRules": [
     {
-      "packagePatterns": ["^eslint"],
+      "packagePatterns": [
+        "^eslint"
+      ],
       "groupName": "eslint"
     },
     {
-      "packagePatterns": ["^vue"],
+      "packagePatterns": [
+        "^vue"
+      ],
       "groupName": "vue"
     }
   ]
