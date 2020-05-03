@@ -7,7 +7,7 @@ import {
 } from './mutation-types';
 
 const getRandomInt = (start = 0, end = 10) => Math.round(Math.random() * (end - start)) + start;
-const getRandomObjKey = obj => getRandomInt(1, Object.keys(obj).length);
+const getRandomObjKey = (obj) => getRandomInt(1, Object.keys(obj).length);
 
 const state = {
   numberOfQuestions: 10,
@@ -20,7 +20,7 @@ const state = {
 };
 
 const getters = {
-  questionById: ({ dataset }) => id => dataset.questions[id],
+  questionById: ({ dataset }) => (id) => dataset.questions[id],
   currentQuestions: ({ currentQuestionsIds }, { questionById }) => (
     currentQuestionsIds.map(questionById)
   ),
@@ -46,7 +46,7 @@ const getters = {
   countIncorrect: ({ currentUserAnswerIds }, { countCorrect, countUnanswered }) => (
     currentUserAnswerIds.length - countCorrect - countUnanswered
   ),
-  getAnswerByIndex: ({ currentUserAnswerIds }) => index => currentUserAnswerIds[index],
+  getAnswerByIndex: ({ currentUserAnswerIds }) => (index) => currentUserAnswerIds[index],
   conditions: ({ dataset }) => Object.values(dataset.conditions),
 };
 

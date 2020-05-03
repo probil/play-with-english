@@ -1,4 +1,4 @@
-const pad = number => (`0${number}`).slice(-2);
+const pad = (number) => (`0${number}`).slice(-2);
 
 export default (value) => {
   const minutes = Math.trunc(value / 60);

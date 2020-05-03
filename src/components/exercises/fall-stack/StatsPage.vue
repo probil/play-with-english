@@ -20,7 +20,7 @@ export default {
     stats: {
       type: Object,
       required: true,
-      validator: obj => obj
+      validator: (obj) => obj
         && Number.isInteger(obj.correct)
         && Number.isInteger(obj.incorrect)
         && Number.isInteger(obj.unanswered),

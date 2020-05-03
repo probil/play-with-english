@@ -47,7 +47,7 @@ export default {
     time: {
       type: Number,
       default: 5,
-      validate: val => val > 0 && Number.isInteger(val),
+      validate: (val) => val > 0 && Number.isInteger(val),
     },
     lineWidth: {
       type: Number,

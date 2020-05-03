@@ -52,8 +52,8 @@
 <script>
 import _shuffle from 'lodash/shuffle';
 import draggable from 'vuedraggable';
-import MusicPlayer from './MusicPlayer.vue';
 import timeFormat from '@/filters/timeFormat';
+import MusicPlayer from './MusicPlayer.vue';
 
 export default {
   components: {
@@ -82,7 +82,7 @@ export default {
     prepareSong() {
       this.preparedSong = this.lyrics
         .split('\n')
-        .filter(value => value.trim())
+        .filter((value) => value.trim())
         .map((value, id) => ({ value, id }));
       this.shuffledLines = _shuffle(this.preparedSong);
     },

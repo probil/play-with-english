@@ -27,12 +27,12 @@ export default {
     numberOfQuestions: {
       type: Number,
       default: 15,
-      validator: val => Number.isInteger(val) && val > 0 && val <= 50,
+      validator: (val) => Number.isInteger(val) && val > 0 && val <= 50,
     },
     dataset: {
       type: Object,
       required: true,
-      validate: val => val && val.questions && val.conditions,
+      validate: (val) => val && val.questions && val.conditions,
     },
   },
   data: () => ({

@@ -17,7 +17,7 @@ export default {
     stats: {
       type: Object,
       required: true,
-      validator: obj => obj
+      validator: (obj) => obj
         && Number.isInteger(obj.time),
     },
   },
