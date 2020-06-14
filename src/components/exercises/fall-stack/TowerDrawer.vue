@@ -54,7 +54,6 @@ export default {
 };
 </script>
 
-
 <style lang="stylus">
 .tower-drawer
   width 100%
