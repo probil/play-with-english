@@ -1,31 +1,30 @@
 # play-with-english
-
-## Project setup
-```
+## CLI commands
+```bash
+# Project setup
 yarn install
-```
 
-### Compiles and hot-reloads for development
-```
+# Compiles and hot-reloads for development
 yarn run serve
-```
 
-### Compiles and minifies for production
-```
+# Compiles and minifies for production
 yarn run build
-```
 
-### Run your tests
-```
+# Run tests
 yarn run test
-```
 
-### Lints and fixes files
-```
+# Lints and fixes files
 yarn run lint
-```
 
-### Run your unit tests
-```
+# Run your unit tests
 yarn run test:unit
 ```
+
+## Roadmap
+- [X] Exercise: Fall stack 
+- [X] Exercise: Play Phrases
+- [X] Exercise: Lyric puzzle
+- [ ] Exercise: Never Misspell
+- [ ] Tech: Tailwind for styling
+- [ ] Idea: write word/number by spelling (as in IELTS Listening test)
+- [ ] Idea for refactor: get rid of `components/pages` folder use root component in exercise dir instead
