@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import DashboardPage from '@/components/pages/Dashboard.vue';
 import PlayPhrasesPage from '@/components/pages/PlayPhrases.vue';
 import LyricsPuzzlePage from '@/components/pages/LyricsPuzzle.vue';
+import NeverMisspellPage from '@/components/pages/NeverMisspell.vue';
 
 const FallStackPage = () => import('@/components/pages/FallStack.vue');
 
@@ -17,5 +18,6 @@ export default new Router({
     { path: '/fall-stack', component: FallStackPage },
     { path: '/play-phrases', component: PlayPhrasesPage },
     { path: '/lyrics-puzzle', component: LyricsPuzzlePage },
+    { path: '/never-misspell', component: NeverMisspellPage },
   ],
 });
