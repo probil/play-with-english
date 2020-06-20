@@ -1,6 +1,6 @@
 <template>
   <div class="get-ready">
-    <h3>Get ready</h3>
+    <h3 class="text-lg font-bold">Get ready</h3>
     <div
       class="get-ready__wrapper"
       :style="{

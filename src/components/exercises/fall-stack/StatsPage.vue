@@ -1,6 +1,6 @@
 <template>
   <div class="stats-page">
-    <h1>Statistics</h1>
+    <h1 class="text-2xl font-bold">Statistics</h1>
     <StatsChart :stats="stats" class="stats-page__pie-chart"/>
     <button
       type="button"

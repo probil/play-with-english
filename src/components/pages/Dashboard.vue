@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <div class="dashboard__exercises">
-      <h2>Exercises</h2>
+      <h2 class="text-xl font-bold">Exercises</h2>
       <router-link
         v-for="exercise in exercises"
         :key="exercise.link"
@@ -11,7 +11,7 @@
       >
         <div class="exercise-line__arrow">&#x27A4;</div>
         <div class="exercise-line__details">
-          <h3>{{ exercise.title }}</h3>
+          <h3 class="text-lg font-bold">{{ exercise.title }}</h3>
         </div>
       </router-link>
     </div>

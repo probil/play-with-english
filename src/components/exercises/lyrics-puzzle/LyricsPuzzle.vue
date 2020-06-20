@@ -1,6 +1,6 @@
 <template>
   <div class="lyrics-puzzle">
-    <h2>Lyrics puzzle</h2>
+    <h2 class="text-xl font-bold">Lyrics puzzle</h2>
     <p>
       <MusicPlayer :source="source"/>
     </p>

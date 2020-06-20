@@ -1,6 +1,6 @@
 <template>
   <div class="stats">
-    <h1>Hooray!</h1>
+    <h1 class="text-2xl">Hooray!</h1>
     <p>Your time: {{ stats.time | timeFormat }}</p>
     <button
       type="button"

@@ -8,7 +8,7 @@
       >
         <div class="song-line__arrow">&#x27A4;</div>
         <div class="song-line__details">
-          <h4 class="song-line__artist">{{song.artist}}</h4>
+          <h4 class="song-line__artist font-bold">{{song.artist}}</h4>
           <p class="song-line__title">{{song.title}}</p>
         </div>
       </div>
