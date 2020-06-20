@@ -1,7 +1,7 @@
 module.exports = {
   plugins: {
     tailwindcss: {},
-    'vue-cli-plugin-tailwind/purgecss': {},
+    ...(process.env.NODE_ENV === 'production' ? { 'vue-cli-plugin-tailwind/purgecss': {} } : {}),
     autoprefixer: {},
   },
 };
