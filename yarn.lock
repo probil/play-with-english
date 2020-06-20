@@ -12128,7 +12128,7 @@ vue-chartjs@3.5.0:
   resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-3.5.0.tgz#edd0c2be94c521bcbc5357c24afb9f3560855f84"
   integrity sha512-yWNhG3B6g6lvYqNInP0WaDWNZG/SNb6XnltkjR0wYC5pmLm6jvdiotj8er7Mui8qkJGfLZe6ULjrZdHWjegAUg==
 
-vue-cli-plugin-tailwind@~1.4.1:
+vue-cli-plugin-tailwind@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/vue-cli-plugin-tailwind/-/vue-cli-plugin-tailwind-1.4.1.tgz#b1cfba53115c5e02b1e1f8a08b672d3aacd24093"
   integrity sha512-IEm6a3F6hJp6bLs48x3SHU5jgy4y+29/oio7HhzpPSZmBNCGMD2gDJzr9Nq2S96+liac3XkkZaDWBv3Bpm9iug==
