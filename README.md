@@ -25,6 +25,6 @@ yarn run test:unit
 - [X] Exercise: Play Phrases
 - [X] Exercise: Lyric puzzle
 - [ ] Exercise: Never Misspell
-- [ ] Tech: Tailwind for styling
+- [X] Tech: Tailwind for styling
 - [ ] Idea: write word/number by spelling (as in IELTS Listening test)
 - [ ] Idea for refactor: get rid of `components/pages` folder use root component in exercise dir instead
