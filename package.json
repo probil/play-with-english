@@ -11,7 +11,7 @@
   "dependencies": {
     "axios": "0.21.0",
     "chart.js": "2.9.4",
-    "core-js": "3.8.0",
+    "core-js": "3.8.1",
     "es6-tween": "5.5.11",
     "lodash": "4.17.20",
     "register-service-worker": "1.7.1",
