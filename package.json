@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "0.24.0",
-    "chart.js": "2.9.4",
+    "chart.js": "3.9.1",
     "core-js": "3.19.0",
     "es6-tween": "5.5.11",
     "lodash": "4.17.21",
